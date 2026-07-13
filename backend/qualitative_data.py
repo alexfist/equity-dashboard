@@ -1,0 +1,447 @@
+# Update earnings summaries manually.
+# Generate new summaries in Claude at claude.ai and paste them here.
+
+QUALITATIVE_DATA = {
+    "VRTX": {
+        "business_summary": {
+            "paragraphs": [
+                "Vertex Pharmaceuticals holds a near-monopoly in cystic fibrosis (CF) treatment "
+                "through its CFTR modulator drugs, Trikafta and the newer once-daily Alyftrek "
+                "(approved December 2024). These drugs cover about 90% of eligible CF patients "
+                "globally. Fiscal year 2025 revenue reached $12.0 billion at a 33% net margin, and "
+                "the company holds $12.3 billion in net cash with effectively no debt, making it "
+                "one of the strongest balance sheets in large-cap biotech.",
+                "Vertex is using its CF cash flow to fund three new treatment areas at once. In "
+                "pain, Journavx was approved by the FDA in January 2025 as the first non-opioid "
+                "pill for acute pain. In kidney disease, povetacicept has an application filed with "
+                "the FDA as of Q1 2026 and has been granted Breakthrough Therapy status for a "
+                "condition called IgA nephropathy. In blood disorders, Casgevy is a gene-editing "
+                "therapy, using CRISPR technology, approved in 2023 for sickle cell disease and "
+                "beta-thalassemia. Management is trying to repeat the CF playbook in each new area: "
+                "strong science, careful clinical execution, and premium pricing that comes with "
+                "limited competition.",
+                "The key question for investors is whether Vertex's edge in CF treatment carries "
+                "over to these new disease areas. Journavx and povetacicept rely on similar types "
+                "of drug science that Vertex already knows well. Casgevy and the company's stem "
+                "cell program for type 1 diabetes are a bigger stretch, since they use technology "
+                "Vertex has not worked with as extensively. Casgevy's slow sales ramp so far is an "
+                "early sign that these newer bets may face challenges the company cannot fully "
+                "control.",
+            ],
+            "source": "Research · July 2026",
+        },
+        "moat": {
+            "type": "Intangible Assets + Efficient Scale",
+            "strength": "WIDE",
+            "description": (
+                "Vertex has spent more than 20 years building deep scientific knowledge of the "
+                "CFTR protein that competitors cannot easily copy. This is not just about patents, "
+                "it is accumulated expertise that is hard to replicate. No competitor has "
+                "successfully challenged Vertex's dominance in CF treatment in two decades despite "
+                "real attempts. The CF patient population is large enough to support Vertex's "
+                "business but not large enough to justify a rival spending 20 years catching up, "
+                "which is a classic case of a market too small for two winners. The newer programs "
+                "in pain and kidney disease draw on Vertex's chemistry expertise but have not yet "
+                "built the same kind of structural advantage."
+            ),
+            "source": "Research · July 2026",
+        },
+        "csuite": [
+            {
+                "name": "Reshma Kewalramani",
+                "role": "CEO & President",
+                "tenure": "Since April 2020",
+                "strengths": [
+                    "Trained as a nephrologist (kidney specialist), directly relevant to the "
+                    "povetacicept kidney disease program",
+                    "Personally bought 10,000 shares at about $390 in August 2025, a meaningful "
+                    "signal of insider confidence",
+                    "92.4% of her compensation is tied to stock performance",
+                    "Ended the VX-264 type 1 diabetes device program in 2025 when the data was not "
+                    "compelling, showing discipline rather than sticking with a program for its "
+                    "own sake",
+                ],
+                "watch": [
+                    "As a trained nephrologist who championed the $4.6 billion Alpine acquisition "
+                    "that brought in povetacicept, she has a personal connection to the kidney "
+                    "disease program. That could bias capital allocation decisions if commercial "
+                    "signals turn negative",
+                    "She is managing three commercial launches at once (Journavx, Casgevy, and "
+                    "Alyftrek), four late-stage trials, and two C-suite leadership transitions at "
+                    "the same time",
+                ],
+            },
+            {
+                "name": "Charlie Wagner",
+                "role": "CFO + COO (dual role)",
+                "tenure": "CFO since 2019, added COO mid-2025",
+                "strengths": [
+                    "Guided revenue growth from $3B to $13B since joining",
+                    "Has a track record of scaling multiple healthcare companies",
+                    "Describes himself as energized by complexity and operational challenges",
+                ],
+                "watch": [
+                    "Now holds both the CFO and COO roles at the company's most operationally "
+                    "complex moment, which raises bandwidth concerns",
+                    "At most large pharma companies, these are two separate jobs for a reason",
+                ],
+            },
+            {
+                "name": "Mark Bunnage",
+                "role": "CSO (incoming, effective Feb 2026)",
+                "tenure": "SVP Global Research since 2016",
+                "strengths": [
+                    "A 10-year Vertex insider deeply embedded in the company's clinical research "
+                    "culture",
+                    "Led the due diligence team that evaluated the Alpine acquisition, which "
+                    "brought povetacicept, one of the pipeline's most promising assets, to Vertex",
+                    "Multiple programs advanced to clinical trials under his research leadership, "
+                    "including Casgevy, Journavx, and other next-generation molecules",
+                ],
+                "watch": [
+                    "He is stepping into the role held by David Altshuler, who built the company's "
+                    "entire commercial portfolio over 13 years",
+                    "He is unproven as chief scientific officer at this scale. He has been a "
+                    "strong second-in-command in research, but it is unclear if he can originate "
+                    "future programs at the same rate",
+                ],
+            },
+        ],
+        "earnings": [
+            {
+                "period": "Q1 2026",
+                "date": "April 2026",
+                "summary": (
+                    "CEO Kewalramani highlighted continued strength in the CF franchise, with "
+                    "Alyftrek adoption ramping faster than expected. The rolling application for "
+                    "povetacicept remains on track, and management expressed high confidence in "
+                    "FDA approval by Q4 2026. Journavx prescription volume tripled compared to the "
+                    "2025 pace, though insurance coverage is still expanding and remains the main "
+                    "factor limiting sales growth. The leadership transition from Altshuler to "
+                    "Bunnage in the chief scientific officer role is described as proceeding "
+                    "smoothly, though analysts pressed management on the risk to pipeline "
+                    "continuity."
+                ),
+                "key_quotes": [
+                    {
+                        "quote": (
+                            "Alyftrek is converting faster than we modeled. The once-daily "
+                            "profile is resonating with both patients and physicians."
+                        ),
+                        "speaker": "Reshma Kewalramani",
+                        "role": "CEO",
+                    },
+                    {
+                        "quote": (
+                            "The rolling BLA for povetacicept is on track. We remain highly "
+                            "confident in the strength of the RAINIER data and the pathway to "
+                            "approval."
+                        ),
+                        "speaker": "Reshma Kewalramani",
+                        "role": "CEO",
+                    },
+                ],
+                "guidance": {
+                    "revenue": "$12.95 to $13.1 billion",
+                    "growth": "About 8 to 9% year over year",
+                    "margin": "Non-GAAP operating margin about 43 to 44%",
+                },
+                "risks_flagged": [
+                    "Insurance coverage for Journavx is still expanding, and that remains the "
+                    "main factor limiting sales growth",
+                    "Analysts flagged continuity risk from the chief scientific officer "
+                    "transition",
+                    "Two-year kidney function data needed to confirm povetacicept's results is "
+                    "still pending",
+                ],
+                "source_url": "https://investors.vrtx.com",
+                "source_label": "Vertex Investor Relations · Q1 2026",
+            }
+        ],
+    },
+    "AVGO": {
+        "business_summary": {
+            "paragraphs": [
+                "Broadcom runs two business segments with different but complementary strengths. "
+                "Semiconductor Solutions, about 61% of fiscal 2025 revenue, designs custom AI "
+                "chips in close partnership with Google, Meta, and Apple. It also dominates the "
+                "networking chips that connect AI data center hardware together, through its "
+                "Tomahawk and Jericho product lines. Infrastructure Software, about 39% of "
+                "revenue, includes VMware, a virtualization platform used by enterprise IT "
+                "departments (acquired in November 2023 for $69 billion), and CA Technologies "
+                "mainframe software. Both software businesses benefit from customers who find it "
+                "costly and disruptive to switch providers.",
+                "Fiscal 2025 results: revenue of $63.9 billion, free cash flow of $26.9 billion, "
+                "and EBITDA margins above 65%. AI chip revenue reached about $20 billion in fiscal "
+                "2025, growing more than 100% year over year, driven by rising demand from large "
+                "cloud computing customers. Management has guided to a fiscal 2027 AI market "
+                "opportunity of $60 to 90 billion from just five large customers, three existing "
+                "and two new ones starting in fiscal 2026. Guidance for Q1 fiscal 2026 AI chip "
+                "revenue of $8.2 billion represents roughly 100% year over year growth continuing.",
+                "The core debate for investors: Broadcom's chip business has a genuine structural "
+                "advantage because designing custom chips with a customer creates deep, sticky "
+                "partnerships that are hard to displace. The software business has similarly "
+                "strong customer lock-in, but it also carries real regulatory risk from the EU and "
+                "litigation from enterprise customers over VMware's pricing changes. The stock "
+                "trades at 19.8 times forward earnings versus a semiconductor sector median of "
+                "36.3 times. That discount reflects two specific investor concerns: possible EU "
+                "regulatory action on VMware, and the unresolved question of who succeeds CEO "
+                "Hock Tan, who is over 73.",
+            ],
+            "source": "Research · July 2026",
+        },
+        "moat": {
+            "type": "Switching Costs (dual: semiconductor + software)",
+            "strength": "WIDE",
+            "description": (
+                "Broadcom's custom chip partnerships with Google, Meta, and Apple would take a "
+                "competitor an estimated three to five years to replicate, because these are "
+                "multi-year engineering collaborations rather than simple vendor contracts. The "
+                "Tomahawk and Jericho networking chips carry similar lock-in within AI data "
+                "centers. On the software side, VMware and CA mainframe software are embedded so "
+                "deeply in enterprise IT systems that switching realistically takes years. A "
+                "lawsuit filed by UnitedHealthcare explicitly stated that moving to alternative "
+                "mainframe software would take years, which is exactly the kind of switching cost "
+                "this moat depends on."
+            ),
+            "source": "Research · July 2026",
+        },
+        "csuite": [
+            {
+                "name": "Hock Tan",
+                "role": "President & CEO",
+                "tenure": "Since 2006",
+                "strengths": [
+                    "Built a $5 billion company (Avago) into a $1.5 trillion company (Broadcom) "
+                    "through disciplined acquisitions over 19 years",
+                    "Shows extreme capital discipline. He walked away from the Qualcomm deal when "
+                    "regulatory conditions turned unfavorable rather than overpaying to get it "
+                    "done",
+                    "Has consistently delivered on every financial commitment made publicly, "
+                    "which is rare among large-cap tech companies",
+                    "Focused on free cash flow as an operator. EBITDA margins expanded from 55% "
+                    "to over 65% under his leadership",
+                    "Recently joined Meta's board, a sign of his continued relevance in the AI "
+                    "industry",
+                ],
+                "watch": [
+                    "He is over 73 years old, and no public succession plan has been identified "
+                    "anywhere in analyst coverage. This is one of the most underweighted risks by "
+                    "the market",
+                    "VMware's pricing strategy, which raised prices 800 to 1,500% for some "
+                    "customers, triggered lawsuits from AT&T and UnitedHealthcare and an EU "
+                    "regulatory inquiry. It is controversial but intentional, and the cash flow "
+                    "results support the strategy so far",
+                    "The hostile Qualcomm bid in 2017 to 2018 was blocked by the Trump "
+                    "administration on national security grounds. Since then, Broadcom has stuck "
+                    "to negotiated deals only",
+                    "The company has been shaped almost entirely by Tan's personal acquisition "
+                    "strategy, which makes succession risk existential rather than just "
+                    "operational",
+                ],
+            },
+            {
+                "name": "Kirsten Spears",
+                "role": "CFO",
+                "tenure": "Since 2016",
+                "strengths": [
+                    "Communicates consistently and clearly about free cash flow",
+                    "Strong operational execution across several large acquisitions, including "
+                    "the VMware integration",
+                    "Has a clear and disciplined track record on guidance",
+                ],
+                "watch": [
+                    "Has a lower public profile than Tan outside of financial reporting, so her "
+                    "strategic vision is less visible"
+                ],
+            },
+        ],
+        "earnings": [
+            {
+                "period": "Q3 FY2025",
+                "date": "September 2025",
+                "summary": (
+                    "Record quarterly revenue was driven by continued acceleration in AI chip "
+                    "demand and progress integrating VMware. CEO Tan guided Q4 AI chip revenue to "
+                    "$6.2 billion, marking eleven consecutive quarters of AI revenue growth. "
+                    "VMware software revenue growth is accelerating as enterprise customers move "
+                    "to subscription bundles. EBITDA margins continue to expand to new records. "
+                    "Analysts pressed management on EU regulatory risk around VMware. Management "
+                    "pointed to 87% of its top 10,000 customers signing up for the new bundles as "
+                    "evidence that the pricing model is holding up."
+                ),
+                "key_quotes": [
+                    {
+                        "quote": (
+                            "Q3 AI revenue growth accelerated to 63% year-over-year to $5.2 "
+                            "billion. We expect growth in AI semiconductor revenue to accelerate "
+                            "to $6.2 billion in Q4, delivering eleven consecutive quarters of "
+                            "growth."
+                        ),
+                        "speaker": "Hock Tan",
+                        "role": "CEO",
+                    },
+                    {
+                        "quote": (
+                            "Consolidated revenue grew 22% year-over-year to a record $16.0 "
+                            "billion."
+                        ),
+                        "speaker": "Hock Tan",
+                        "role": "CEO",
+                    },
+                ],
+                "guidance": {
+                    "revenue": "$19.1 billion for Q1 fiscal 2026",
+                    "growth": "About 22% year over year, consolidated",
+                    "margin": "67% adjusted EBITDA margin guided for Q1 fiscal 2026",
+                },
+                "risks_flagged": [
+                    "Possible EU regulatory action on VMware pricing, including inquiry risk "
+                    "from the European Commission",
+                    "Third-party analysts have flagged the risk that AI capital spending by "
+                    "customers could peak in the second half of 2026",
+                    "AI chip revenue is concentrated among a small number of large cloud "
+                    "computing customers",
+                ],
+                "source_url": "https://investors.broadcom.com",
+                "source_label": "Broadcom Investor Relations · Q3 FY2025",
+            }
+        ],
+    },
+    "COST": {
+        "business_summary": {
+            "paragraphs": [
+                "Costco runs a membership warehouse retail model built on deliberate limits and "
+                "scale. Carrying only about 5,000 products, compared to over 30,000 at a typical "
+                "supermarket, gives Costco extraordinary purchasing power and fast inventory "
+                "turnover. Its Kirkland Signature private label matches or beats national brands "
+                "in quality at 15 to 20% lower prices. This deepens member loyalty and compresses "
+                "gross margin in a way that actually strengthens the moat, because it makes "
+                "Costco's value proposition impossible for traditional retailers to match without "
+                "hurting their own profits.",
+                "The membership fee is the financial engine of the business. Annual membership "
+                "fees, $5.32 billion in fiscal 2025, flow almost entirely to the bottom line and "
+                "represent about 50% of total operating income despite being less than 2% of "
+                "total revenue. The 89.8% renewal rate is not just a satisfaction metric. It "
+                "reflects real switching costs built into the membership relationship. Fiscal "
+                "2025 total revenue reached $280.4 billion, a 10-year revenue growth rate of "
+                "about 9.2% per year. The September 2024 membership fee increase, from $60 to $65 "
+                "for standard members and $110 to $130 for executive members, was absorbed with "
+                "minimal member loss.",
+                "Fiscal 2026 headwinds are real but manageable given Costco's cost structure. "
+                "Tariff uncertainty is being addressed through Kirkland Signature expansion and "
+                "diversifying suppliers across more countries. Wage pressure, with the top pay "
+                "scale now at $31.90 per hour, flows through operating expenses but is partly "
+                "offset by the efficiency of the warehouse format. Internationally, 35 new "
+                "warehouses are planned for fiscal 2026, and e-commerce sales grew 22.6% in Q2 "
+                "fiscal 2026.",
+            ],
+            "source": "Research · July 2026",
+        },
+        "moat": {
+            "type": "Cost Advantage + Switching Costs",
+            "strength": "WIDE",
+            "description": (
+                "The 5,000-product discipline and warehouse format create a structural cost "
+                "advantage that traditional retailers cannot match even with unlimited capital, "
+                "because matching it would require abandoning how conventional retail operates. "
+                "The membership fee also creates a psychological switching cost. Members who have "
+                "paid $65 to $130 for annual access are motivated to keep shopping at Costco to "
+                "get their money's worth, which creates loyalty that goes beyond rational price "
+                "comparison. The treasure hunt shopping experience and Kirkland Signature quality "
+                "are both genuinely difficult for competitors to replicate at scale."
+            ),
+            "source": "Research · July 2026",
+        },
+        "csuite": [
+            {
+                "name": "Ron Vachris",
+                "role": "President & CEO",
+                "tenure": "Since January 2024",
+                "strengths": [
+                    "A 40-year company veteran who started as a teenage forklift driver, giving "
+                    "him about as deep a connection to Costco's culture as anyone could have",
+                    "Only the third CEO in Costco's history, providing continuity with the "
+                    "company's founding philosophy",
+                    "$10.6M of his $12.2M total compensation is tied to pre-tax income "
+                    "performance goals, showing strong alignment with shareholders",
+                    "Maintained the company's diversity commitments under shareholder pressure, "
+                    "with 98% shareholder support on the pay vote",
+                ],
+                "watch": [
+                    "This is his first CEO tenure navigating a genuinely complex macro "
+                    "environment, with tariffs, energy costs tied to conflict in the Middle East, "
+                    "and wage inflation all happening at once",
+                    "He communicates less publicly than peer CEOs, and his style is more "
+                    "operational than visionary",
+                    "Navigating tariffs will test him in ways his predecessor, Craig Jelinek, "
+                    "never had to face",
+                ],
+            },
+            {
+                "name": "Gary Millerchip",
+                "role": "CFO",
+                "tenure": "Since 2018",
+                "strengths": [
+                    "Proactively discloses headwinds, including flagging wage costs and Middle "
+                    "East energy risk directly on earnings calls",
+                    "A clear communicator on cost structure and membership economics",
+                ],
+                "watch": [
+                    "The company's tariff pass-through strategy is still being worked out and has "
+                    "not yet been fully explained to investors"
+                ],
+            },
+        ],
+        "earnings": [
+            {
+                "period": "Q3 FY2026",
+                "date": "June 2026",
+                "summary": (
+                    "CEO Vachris highlighted tariff headwinds being actively managed through "
+                    "Kirkland Signature expansion, with more than 30 new items added in Q4, and "
+                    "supplier diversification across more countries. The membership renewal rate "
+                    "held steady at 89.8%, even after the September 2024 fee increase fully "
+                    "cycled through. E-commerce sales grew 22.6% in Q2, accelerating from prior "
+                    "quarters. Wage costs, with the top pay scale raised to $31.90 per hour, were "
+                    "explicitly flagged as an ongoing expense pressure. International expansion "
+                    "remains on track, with 35 new warehouses planned for the full fiscal year."
+                ),
+                "key_quotes": [
+                    {
+                        "quote": (
+                            "Our members continue to show remarkable loyalty. The renewal rate "
+                            "holding at 89.8% after the fee increase tells you everything about "
+                            "the value proposition we deliver."
+                        ),
+                        "speaker": "Ron Vachris",
+                        "role": "CEO",
+                    },
+                    {
+                        "quote": (
+                            "The future impact of tariffs remains extremely fluid. What I can "
+                            "tell you is that our buying team and Kirkland Signature capabilities "
+                            "give us tools most retailers simply do not have."
+                        ),
+                        "speaker": "Ron Vachris",
+                        "role": "CEO",
+                    },
+                ],
+                "guidance": {
+                    "revenue": "$295 to $305 billion estimated for fiscal 2026",
+                    "growth": "About 7 to 8% year over year",
+                    "margin": "Operating margin of about 3.5 to 3.7%",
+                },
+                "risks_flagged": [
+                    "The impact of tariffs on merchandise costs remains fluid and difficult to "
+                    "quantify precisely",
+                    "Wage inflation, with the top pay scale at $31.90 per hour, is an ongoing "
+                    "expense pressure",
+                    "CFO Millerchip flagged energy cost risk tied to conflict in the Middle East",
+                ],
+                "source_url": "https://investor.costco.com",
+                "source_label": "Costco Investor Relations · Q3 FY2026",
+            }
+        ],
+    },
+}
