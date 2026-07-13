@@ -46,5 +46,5 @@ release cut.
 - Removed a real API key that had been accidentally copied into
   `backend/.env.example`; it now contains only a placeholder.
 
-[Unreleased]: https://github.com/OWNER/equity-dashboard/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/OWNER/equity-dashboard/releases/tag/v0.1.0
+[Unreleased]: https://github.com/alexfist/equity-dashboard/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/alexfist/equity-dashboard/releases/tag/v0.1.0
