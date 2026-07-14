@@ -25,11 +25,13 @@ export function CompanyHeader({
           : "HOLD";
 
   const badgeClass =
-    {
-      BUY: "bg-accent-green/15 text-accent-green border border-accent-green/30",
-      HOLD: "bg-accent-amber/15 text-accent-amber border border-accent-amber/30",
-      SELL: "bg-accent-red/15 text-accent-red border border-accent-red/30",
-    }[recommendation] ?? "bg-accent-blue/15 text-accent-blue border border-accent-blue/30";
+    (
+      {
+        BUY: "bg-accent-green/15 text-accent-green border border-accent-green/30",
+        HOLD: "bg-accent-amber/15 text-accent-amber border border-accent-amber/30",
+        SELL: "bg-accent-red/15 text-accent-red border border-accent-red/30",
+      } as Record<string, string>
+    )[recommendation] ?? "bg-accent-blue/15 text-accent-blue border border-accent-blue/30";
 
   return (
     <div className="rounded-lg border border-panel-border bg-panel p-6">
