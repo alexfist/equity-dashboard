@@ -10,6 +10,13 @@ release cut.
 
 ## [Unreleased]
 
+### Changed
+- CORS allowed origins (backend) and the API base URL (frontend) are now
+  configurable via `ALLOWED_ORIGINS` and `VITE_API_BASE_URL` env vars,
+  falling back to the local dev ports so `npm run dev` / `uvicorn --reload`
+  keep working unchanged. Needed to point a deployed frontend at a deployed
+  backend instead of hardcoded localhost URLs.
+
 ## [0.1.0] - 2026-07-13
 
 ### Added

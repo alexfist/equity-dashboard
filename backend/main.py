@@ -1,5 +1,7 @@
 """Equity Research Dashboard — FastAPI backend."""
 
+import os
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -15,9 +17,15 @@ import sec_edgar
 
 app = FastAPI(title="Equity Research Dashboard API")
 
+# Comma-separated list of allowed frontend origins, e.g.
+# "http://localhost:5173,https://equity-dashboard.vercel.app". Falls back to
+# the local Vite dev server when unset so `uvicorn main:app --reload` keeps
+# working out of the box.
+_allowed_origins = os.environ.get("ALLOWED_ORIGINS", "http://localhost:5173")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=[o.strip() for o in _allowed_origins.split(",") if o.strip()],
     allow_methods=["*"],
     allow_headers=["*"],
 )
