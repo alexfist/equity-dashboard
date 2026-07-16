@@ -10,12 +10,20 @@ release cut.
 
 ## [Unreleased]
 
+### Added
+- Screenshots section in the root README (`docs/screenshots/dashboard-overview.png`).
+
 ### Changed
 - CORS allowed origins (backend) and the API base URL (frontend) are now
   configurable via `ALLOWED_ORIGINS` and `VITE_API_BASE_URL` env vars,
   falling back to the local dev ports so `npm run dev` / `uvicorn --reload`
   keep working unchanged. Needed to point a deployed frontend at a deployed
   backend instead of hardcoded localhost URLs.
+
+### Fixed
+- TypeScript build error on Vercel: the recommendation badge color map was
+  missing the `INVESTIGATE` key, which `company.recommendation` can be
+  (AVGO's static fallback value).
 
 ## [0.1.0] - 2026-07-13
 

@@ -2,6 +2,10 @@
 
 A full-stack equity research dashboard covering VRTX (Vertex Pharmaceuticals), AVGO (Broadcom), and COST (Costco). Quantitative financials are pulled live from SEC EDGAR; peer comps and DCF assumptions are hardcoded research inputs; the interactive DCF model runs entirely client-side.
 
+## Screenshots
+
+![VRTX dashboard: company header, key metrics, revenue chart, interactive DCF model, peer comps, and qualitative research sections](docs/screenshots/dashboard-overview.png)
+
 ## Prerequisites
 
 - Python 3.10+
