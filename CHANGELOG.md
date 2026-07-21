@@ -25,6 +25,15 @@ release cut.
   missing the `INVESTIGATE` key, which `company.recommendation` can be
   (AVGO's static fallback value).
 
+### Content
+- AVGO business summary: added a balance sheet paragraph covering goodwill
+  ($97.8B, mostly VMware/CA Technologies), rising stock-based compensation
+  ($2.2B → $7.6B FY2023-FY2025, mostly VMware retention grants), long-term
+  debt (~$62B) with its ~$3B/yr interest expense drag on free cash flow, and
+  the offsetting liquidity cushion ($19.6B cash, fully undrawn $7.5B
+  revolver). Figures verified against SEC EDGAR XBRL data and the FY2025
+  10-K liquidity note.
+
 ## [0.1.0] - 2026-07-13
 
 ### Added
