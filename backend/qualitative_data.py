@@ -46,6 +46,45 @@ QUALITATIVE_DATA = {
             ),
             "source": "Research · July 2026",
         },
+        "risks": {
+            "items": [
+                {
+                    "title": "Revenue is still concentrated in one franchise",
+                    "description": (
+                        "Nearly all of Vertex's current revenue comes from its cystic fibrosis "
+                        "drugs, Trikafta and Alyftrek. A diversified pharma company can absorb a "
+                        "setback in one drug because others carry the business. Vertex cannot yet "
+                        "do that. A new competing therapy, a patent challenge, or a manufacturing "
+                        "problem affecting the CF franchise would hit the company's results much "
+                        "harder than it would a more diversified peer."
+                    ),
+                },
+                {
+                    "title": "The new franchises are still unproven commercially",
+                    "description": (
+                        "Journavx, Casgevy, and povetacicept are all early in their commercial "
+                        "lives, and povetacicept's approval was still pending as of Q1 2026. Each "
+                        "depends on physicians prescribing it, insurers agreeing to cover it, and "
+                        "in povetacicept's case, regulators approving it, none of which Vertex "
+                        "fully controls. Casgevy's slow sales ramp since its 2023 approval is a "
+                        "real example of how a scientifically strong drug can still be commercially "
+                        "slow."
+                    ),
+                },
+                {
+                    "title": "Government drug pricing pressure",
+                    "description": (
+                        "Vertex's CF drugs are priced at a premium, which is the main reason the "
+                        "company earns such high margins. Growing political pressure for "
+                        "pharmaceutical price controls, including Medicare price negotiation in the "
+                        "United States and reference pricing used by governments abroad, is a "
+                        "direct threat to that pricing power, and Vertex has limited ability to "
+                        "control how those policies develop."
+                    ),
+                },
+            ],
+            "source": "Research · July 2026",
+        },
         "csuite": [
             {
                 "name": "Reshma Kewalramani",
@@ -225,6 +264,62 @@ QUALITATIVE_DATA = {
             ),
             "source": "Research · July 2026",
         },
+        "risks": {
+            "items": [
+                {
+                    "title": "The rollup strategy runs on debt",
+                    "description": (
+                        "Broadcom has built itself into a $1.5 trillion company largely by "
+                        "borrowing to fund acquisitions, most recently the $69 billion VMware "
+                        "deal. Total indebtedness stood at $67.1 billion at the end of fiscal "
+                        "2025. That debt has funded real, cash-generating businesses so far, but "
+                        "it also means Broadcom carries meaningfully more leverage than most "
+                        "large-cap tech peers. A misjudged future acquisition, a sustained rise in "
+                        "interest rates, or a slowdown in the cash flow the debt was supposed to "
+                        "be serviced by would all be harder to absorb than they would be for a "
+                        "company with a cleaner balance sheet."
+                    ),
+                },
+                {
+                    "title": "AI customers could bring chip design in-house",
+                    "description": (
+                        "Broadcom's own 2025 annual report discloses that aggregate sales to its "
+                        "top five end customers, through all channels, accounted for approximately "
+                        "40% of net revenue, and that one customer alone, a distributor, accounted "
+                        "for 32%. Several of Broadcom's largest AI chip customers are the same "
+                        "hyperscalers, Google, Meta, and others, that have both the engineering "
+                        "talent and the balance sheets to design more of their own AI silicon "
+                        "in-house over time. Broadcom explicitly lists customers' internal chip "
+                        "development as a risk factor in its own filings. Given how concentrated "
+                        "revenue already is among a handful of these customers, even one of them "
+                        "materially reducing its purchases in favor of in-house chips would be a "
+                        "significant hit to Broadcom's revenue, not a marginal one."
+                    ),
+                },
+                {
+                    "title": "Manufacturing depends on a concentrated, fragile supply chain",
+                    "description": (
+                        "Broadcom does not own the fabs that make its chips. About 95% of the "
+                        "wafers made by its contract manufacturers in fiscal 2025 came from a "
+                        "single company, TSMC, which also makes chips for Broadcom's competitors "
+                        "and could choose, or be required, to prioritize their capacity over "
+                        "Broadcom's. On top of that, Broadcom bought roughly two thirds of its raw "
+                        "manufacturing materials, things like specialized wafers, precious metals, "
+                        "and chemicals, from just five suppliers in fiscal 2025, some of them the "
+                        "only available source for that material. Broadcom does not generally sign "
+                        "long-term contracts with these suppliers, buying instead on a "
+                        "purchase-order basis, so pricing and availability can shift with little "
+                        "warning. Layered on top of that is geopolitical exposure: 17% of "
+                        "Broadcom's fiscal 2025 net revenue came from shipments to China, a region "
+                        "where trade policy and export controls remain unsettled. Any disruption "
+                        "across this chain, whether from TSMC allocating capacity elsewhere, a "
+                        "single-source supplier running short, or new China trade restrictions, "
+                        "could raise Broadcom's costs or limit how much it can actually ship."
+                    ),
+                },
+            ],
+            "source": "Research · July 2026",
+        },
         "csuite": [
             {
                 "name": "Hock Tan",
@@ -370,6 +465,43 @@ QUALITATIVE_DATA = {
                 "comparison. The treasure hunt shopping experience and Kirkland Signature quality "
                 "are both genuinely difficult for competitors to replicate at scale."
             ),
+            "source": "Research · July 2026",
+        },
+        "risks": {
+            "items": [
+                {
+                    "title": "Operating margins leave almost no room for error",
+                    "description": (
+                        "Costco runs on an operating margin of roughly 3.5 to 3.7%, deliberately "
+                        "thin because the strategy is to pass savings to members rather than "
+                        "maximize retail markup. That is a strength when things go right, but it "
+                        "also means there is very little buffer. A cost increase Costco cannot "
+                        "pass through to members or offset with scale, whether from tariffs, wages, "
+                        "or freight, falls almost straight through to profit."
+                    ),
+                },
+                {
+                    "title": "The business depends on members renewing",
+                    "description": (
+                        "Membership fees are less than 2% of revenue but represent about half of "
+                        "total operating income. The entire model depends on keeping the renewal "
+                        "rate near its current 89.8%. A meaningful drop in renewals, or member "
+                        "pushback the next time fees are raised, would hurt profitability far more "
+                        "than the equivalent drop in warehouse sales would."
+                    ),
+                },
+                {
+                    "title": "Tariffs and import exposure",
+                    "description": (
+                        "A meaningful share of Costco's merchandise, including much of the "
+                        "Kirkland Signature private label, is imported or built from imported "
+                        "components. New or higher tariffs raise Costco's costs faster than it can "
+                        "renegotiate with suppliers or shift sourcing to other countries, and "
+                        "management has said the eventual size of the fiscal 2026 tariff impact is "
+                        "still unclear."
+                    ),
+                },
+            ],
             "source": "Research · July 2026",
         },
         "csuite": [

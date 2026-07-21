@@ -130,9 +130,20 @@ export interface EarningsEntry {
   source_label: string;
 }
 
+export interface RiskItem {
+  title: string;
+  description: string;
+}
+
+export interface Risks {
+  items: RiskItem[];
+  source: string;
+}
+
 export interface QualitativeResponse {
   business_summary: BusinessSummary;
   moat: Moat;
+  risks: Risks;
   csuite: CSuiteMember[];
   earnings: EarningsEntry[];
 }

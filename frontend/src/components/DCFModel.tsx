@@ -80,14 +80,12 @@ export function DCFModel({
     () => loadSaved(ticker)?.priceText ?? initialPrice.toFixed(2)
   );
 
-  // Reset when switching companies (assumptions object identity changes per ticker),
-  // restoring any previously saved sliders for that ticker instead of the defaults.
-  useEffect(() => {
-    const saved = loadSaved(ticker);
-    setInputs(saved?.inputs ?? defaultInputsFrom(assumptions));
-    setPriceText(saved?.priceText ?? initialPrice.toFixed(2));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ticker, assumptions]);
+  // No reset-on-ticker-change effect here: CompanyTab mounts this component
+  // with `key={ticker}`, so switching companies fully remounts it and the
+  // lazy useState initializers above run fresh with the new ticker. A reset
+  // effect here would race the persist effect below (it would fire on the
+  // same render, before the reset's setState is applied, and re-persist the
+  // previous ticker's values under the new ticker's storage key).
 
   // Persist sliders and price per ticker so they survive a page reload.
   useEffect(() => {

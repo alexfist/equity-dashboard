@@ -16,6 +16,17 @@ release cut.
   exit multiple, terminal weight) and the current price field now persist to
   `localStorage` per ticker, so they survive a page reload instead of
   resetting to the default assumptions.
+- New "Key Risks" qualitative section (`GET /api/qualitative/{ticker}`
+  → `risks`), rendered between Economic Moat and C-Suite Assessment. AVGO's
+  three risks (debt-funded acquisitions, AI customer concentration/vertical
+  integration, concentrated wafer and materials supply chain) are sourced
+  from figures in Broadcom's FY2025 10-K ($67.1B total indebtedness, ~40%
+  of net revenue from the top five end customers, ~95% of wafers from
+  TSMC, ~17% of net revenue from China shipments). VRTX and COST each get
+  three risks grounded in facts already established in their business
+  summaries (CF revenue concentration, unproven new franchises, and drug
+  pricing pressure for VRTX; thin operating margins, membership renewal
+  dependence, and tariff exposure for COST).
 
 ### Changed
 - CORS allowed origins (backend) and the API base URL (frontend) are now
@@ -30,6 +41,13 @@ release cut.
 - TypeScript build error on Vercel: the recommendation badge color map was
   missing the `INVESTIGATE` key, which `company.recommendation` can be
   (AVGO's static fallback value).
+- DCF sliders bled across ticker tabs: switching tabs could briefly pass one
+  ticker's `dcf`/`company` data alongside another ticker's `ticker` prop
+  (the reset-to-null effect hadn't committed yet), which the new
+  localStorage persistence would then save under the wrong ticker's key.
+  `CompanyTab` now tracks which ticker its loaded data belongs to and only
+  renders `DCFModel` once they match, so sliders and current price never
+  leak between tabs.
 
 ### Content
 - AVGO business summary: added a balance sheet paragraph covering goodwill

@@ -16,6 +16,7 @@ import { RevenueChart, RevenueChartSkeleton } from "./RevenueChart";
 import { DCFModel } from "./DCFModel";
 import { CompsTable } from "./CompsTable";
 import { BusinessOverview, MoatAssessment } from "./BusinessOverview";
+import { RisksSection } from "./Risks";
 import { CSuite } from "./CSuite";
 import { Earnings } from "./Earnings";
 import { NewsFeed } from "./NewsFeed";
@@ -29,6 +30,14 @@ export function CompanyTab({ ticker }: { ticker: Ticker }) {
   const [intrinsicValue, setIntrinsicValue] = useState<number | null>(null);
   const [currentPrice, setCurrentPrice] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
+  // Which ticker `company`/`dcf`/etc actually belong to. On a ticker switch,
+  // the prop updates before the reset-to-null effect below has committed, so
+  // for one render `ticker` is new but the loaded data is still the old
+  // ticker's. Gating DCFModel on loadedTicker === ticker (not just dcf &&
+  // company being non-null) prevents it from ever mounting with a mismatched
+  // ticker/assumptions pair, which previously leaked one ticker's DCF
+  // defaults into another ticker's saved localStorage entry.
+  const [loadedTicker, setLoadedTicker] = useState<Ticker | null>(null);
 
   // Qualitative sections (Part 3) — fetched independently so a failure here
   // never blanks the quantitative sections above (Part 1/2 are untouched).
@@ -45,6 +54,7 @@ export function CompanyTab({ ticker }: { ticker: Ticker }) {
     setIntrinsicValue(null);
     setCurrentPrice(null);
     setError(null);
+    setLoadedTicker(null);
 
     Promise.all([
       api.company(ticker),
@@ -58,6 +68,7 @@ export function CompanyTab({ ticker }: { ticker: Ticker }) {
         setFinancials(f);
         setDcf(d);
         setComps(cp);
+        setLoadedTicker(ticker);
       })
       .catch((err) => {
         if (!cancelled) setError(String(err));
@@ -115,8 +126,9 @@ export function CompanyTab({ ticker }: { ticker: Ticker }) {
 
       {financials ? <RevenueChart annual={financials.annual} /> : <RevenueChartSkeleton />}
 
-      {dcf && company ? (
+      {dcf && company && loadedTicker === ticker ? (
         <DCFModel
+          key={ticker}
           ticker={ticker}
           assumptions={dcf}
           initialPrice={company.current_price}
@@ -136,6 +148,7 @@ export function CompanyTab({ ticker }: { ticker: Ticker }) {
       {/* --- Qualitative sections (Part 3) --- */}
       {qualitative && <BusinessOverview businessSummary={qualitative.business_summary} />}
       {qualitative && <MoatAssessment moat={qualitative.moat} />}
+      {qualitative && <RisksSection risks={qualitative.risks} />}
       {qualitative && <CSuite csuite={qualitative.csuite} />}
       {qualitative && <Earnings earnings={qualitative.earnings} />}
       {news && <NewsFeed articles={news.articles} />}
