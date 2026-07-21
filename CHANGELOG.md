@@ -12,6 +12,10 @@ release cut.
 
 ### Added
 - Screenshots section in the root README (`docs/screenshots/dashboard-overview.png`).
+- DCF slider inputs (growth rates, EBITDA margin, WACC, terminal growth,
+  exit multiple, terminal weight) and the current price field now persist to
+  `localStorage` per ticker, so they survive a page reload instead of
+  resetting to the default assumptions.
 
 ### Changed
 - CORS allowed origins (backend) and the API base URL (frontend) are now
@@ -19,6 +23,8 @@ release cut.
   falling back to the local dev ports so `npm run dev` / `uvicorn --reload`
   keep working unchanged. Needed to point a deployed frontend at a deployed
   backend instead of hardcoded localhost URLs.
+- Key metrics card label corrected from "Net Cash / (Debt)" to "Net Cash -
+  Debt" (the underlying calculation was already cash minus debt).
 
 ### Fixed
 - TypeScript build error on Vercel: the recommendation badge color map was

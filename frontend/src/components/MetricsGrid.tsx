@@ -16,7 +16,7 @@ const METRICS: MetricDef[] = [
   { label: "Net Margin", get: (y) => y.net_margin, fmt: fmtPct, higherIsBetter: true },
   { label: "ROIC", get: (y) => y.roic, fmt: fmtPct, higherIsBetter: true },
   {
-    label: "Net Cash / (Debt)",
+    label: "Net Cash - Debt",
     get: (y) => (y.cash ?? 0) - (y.total_debt ?? 0),
     fmt: fmtUsdB,
     higherIsBetter: true,

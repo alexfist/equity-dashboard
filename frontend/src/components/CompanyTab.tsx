@@ -117,6 +117,7 @@ export function CompanyTab({ ticker }: { ticker: Ticker }) {
 
       {dcf && company ? (
         <DCFModel
+          ticker={ticker}
           assumptions={dcf}
           initialPrice={company.current_price}
           onIntrinsicValueChange={setIntrinsicValue}

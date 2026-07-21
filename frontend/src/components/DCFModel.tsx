@@ -42,27 +42,57 @@ function Slider({
   );
 }
 
+function storageKey(ticker: string) {
+  return `dcf-inputs-${ticker}`;
+}
+
+function loadSaved(ticker: string): { inputs: DCFInputs; priceText: string } | null {
+  try {
+    const raw = localStorage.getItem(storageKey(ticker));
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== "object" || !parsed.inputs || !parsed.priceText) return null;
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
 export function DCFModel({
+  ticker,
   assumptions,
   initialPrice,
   onIntrinsicValueChange,
   onCurrentPriceChange,
 }: {
+  ticker: string;
   assumptions: DCFAssumptions;
   initialPrice: number;
   onIntrinsicValueChange?: (value: number) => void;
   onCurrentPriceChange?: (value: number) => void;
 }) {
-  const [inputs, setInputs] = useState<DCFInputs>(() => defaultInputsFrom(assumptions));
+  const [inputs, setInputs] = useState<DCFInputs>(
+    () => loadSaved(ticker)?.inputs ?? defaultInputsFrom(assumptions)
+  );
   // Raw text, not a number: an empty string is a valid in-progress state while
   // typing, so the field never snaps back to "0" and blocks editing.
-  const [priceText, setPriceText] = useState<string>(() => initialPrice.toFixed(2));
+  const [priceText, setPriceText] = useState<string>(
+    () => loadSaved(ticker)?.priceText ?? initialPrice.toFixed(2)
+  );
 
-  // Reset when switching companies (assumptions object identity changes per ticker)
+  // Reset when switching companies (assumptions object identity changes per ticker),
+  // restoring any previously saved sliders for that ticker instead of the defaults.
   useEffect(() => {
-    setInputs(defaultInputsFrom(assumptions));
-    setPriceText(initialPrice.toFixed(2));
-  }, [assumptions, initialPrice]);
+    const saved = loadSaved(ticker);
+    setInputs(saved?.inputs ?? defaultInputsFrom(assumptions));
+    setPriceText(saved?.priceText ?? initialPrice.toFixed(2));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ticker, assumptions]);
+
+  // Persist sliders and price per ticker so they survive a page reload.
+  useEffect(() => {
+    localStorage.setItem(storageKey(ticker), JSON.stringify({ inputs, priceText }));
+  }, [ticker, inputs, priceText]);
 
   const currentPrice = parseFloat(priceText) || 0;
 
