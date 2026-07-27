@@ -10,7 +10,40 @@ release cut.
 
 ## [Unreleased]
 
+### Changed
+- DCF sliders (all five year-by-year revenue growth rates, EBITDA margin,
+  WACC, and terminal growth rate) now range 0-100% instead of arbitrary
+  narrower caps (e.g. WACC was capped at 18%, terminal growth at 5%),
+  needed for the model to stay usable on outlier assumptions like JPM's.
+  Exit EV/EBITDA Multiple stays 5-40x since it's a multiple, not a percent.
+
 ### Added
+- Fourth ticker, JPM (JPMorgan Chase & Co., CIK 0000019617). Company info,
+  business summary, moat, risks, and C-suite are populated from verified
+  FY2025 10-K figures ($4.4T total assets, $182.4B net revenue, 20% ROTCE,
+  14.6% CET1 ratio, 52% overhead ratio). Several pieces are left as
+  placeholders for manual follow-up, each marked `TODO(user)` in
+  `backend/company_data.py`: `current_price` (no live quote source was
+  available this session), the DCF assumptions (the app's EBITDA/CapEx
+  DCF shape doesn't fit bank economics — flagged for a rework), and most
+  of the peer comps table (BAC/WFC/C/GS values are blank; only JPM's own
+  verified figures are filled in). The earnings section is intentionally
+  empty pending a manually-pasted summary, per this file's own top-of-file
+  convention.
+- Bank-specific XBRL tag fallbacks in `financials.py` so `/api/financials`
+  and the live peer-comps metrics work for bank filers, which don't use the
+  same us-gaap tags as operating companies: `CashAndDueFromBanks` (cash),
+  `LongTermDebtAndCapitalLeaseObligationsIncludingCurrentMaturities` (total
+  debt, since JPM stopped tagging plain `LongTermDebt` after 2013), and a
+  reconstructed pretax-income fallback (`NetIncomeLoss +
+  IncomeTaxExpenseBenefit`) for the missing `OperatingIncomeLoss` line.
+  ROIC's denominator falls back from `Assets - LiabilitiesCurrent` to
+  `StockholdersEquity` when a filer doesn't tag current liabilities, which
+  turns the metric into ROE for those filers. All are additive fallbacks
+  only used when the primary tag is missing, so VRTX/AVGO/COST are
+  unaffected. CapEx (and therefore FCF) has no fallback and stays N/A for
+  banks — no XBRL tag for it exists in JPM's filings, since bank capex is
+  folded into an unbroken-out "other" cash flow line.
 - Screenshots section in the root README (`docs/screenshots/dashboard-overview.png`).
 - DCF slider inputs (growth rates, EBITDA margin, WACC, terminal growth,
   exit multiple, terminal weight) and the current price field now persist to

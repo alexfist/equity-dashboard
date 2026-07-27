@@ -7,6 +7,11 @@ export function Earnings({ earnings }: { earnings: EarningsEntry[] }) {
       <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-text-dim">
         Latest Earnings
       </h3>
+      {earnings.length === 0 && (
+        <p className="py-6 text-center text-sm text-text-dim">
+          No earnings summary added yet
+        </p>
+      )}
       {earnings.map((e) => (
         <div key={e.period}>
           <div className="mb-3 flex items-baseline gap-2">

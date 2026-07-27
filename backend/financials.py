@@ -28,14 +28,33 @@ REVENUE_TAGS = ["RevenueFromContractWithCustomerExcludingAssessedTax", "Revenues
 NET_INCOME_TAGS = ["NetIncomeLoss", "ProfitLoss", "NetIncomeLossAvailableToCommonStockholdersBasic"]
 OPERATING_INCOME_TAGS = ["OperatingIncomeLoss"]
 ASSETS_TAGS = ["Assets"]
-CASH_TAGS = ["CashAndCashEquivalentsAtCarryingValue"]
+# CashAndDueFromBanks: the bank-specific cash tag (e.g. JPM) — banks don't use
+# CashAndCashEquivalentsAtCarryingValue, so this is a pure fallback, never an
+# override, for tickers that report the generic tag.
+CASH_TAGS = ["CashAndCashEquivalentsAtCarryingValue", "CashAndDueFromBanks"]
 CAPEX_TAGS = ["PaymentsToAcquirePropertyPlantAndEquipment"]
 SHARES_TAGS = ["CommonStockSharesOutstanding"]
 CURRENT_LIABILITIES_TAGS = ["LiabilitiesCurrent"]
+# ROIC's denominator (Assets - CurrentLiabilities) falls back to
+# StockholdersEquity for filers that don't tag current liabilities (banks
+# don't split their balance sheet into current/noncurrent) — this changes the
+# metric to ROE for those filers, which is the number banks are actually
+# evaluated on anyway.
+STOCKHOLDERS_EQUITY_TAGS = ["StockholdersEquity"]
+# Pretax income, used only as an OperatingIncomeLoss fallback: banks don't
+# report a GAAP "operating income" line, but NetIncome + IncomeTaxExpense
+# reconstructs their pretax income, which is the closest available analog.
+INCOME_TAX_EXPENSE_TAGS = ["IncomeTaxExpenseBenefit"]
 
 # Debt: prefer a single combined tag; only sum current+noncurrent as a fallback
 # (a company with genuinely no debt, e.g. VRTX, correctly yields None throughout).
-DEBT_COMBINED_TAGS = ["DebtLongtermAndShorttermCombinedAmount", "LongTermDebt"]
+# LongTermDebtAndCapitalLeaseObligationsIncludingCurrentMaturities is the tag
+# large banks (e.g. JPM) now use in place of the plain LongTermDebt tag.
+DEBT_COMBINED_TAGS = [
+    "DebtLongtermAndShorttermCombinedAmount",
+    "LongTermDebt",
+    "LongTermDebtAndCapitalLeaseObligationsIncludingCurrentMaturities",
+]
 DEBT_NONCURRENT_TAGS = ["LongTermDebtNoncurrent"]
 DEBT_CURRENT_TAGS = ["LongTermDebtCurrent"]
 
@@ -158,6 +177,15 @@ def _pct(x: Optional[float]) -> Optional[float]:
     return None if x is None else round(x * 100, 1)
 
 
+def _pretax_income_fallback_series(gaap: dict) -> dict[str, float]:
+    """NetIncome + IncomeTaxExpense, used only to fill years OPERATING_INCOME_TAGS
+    doesn't cover — banks don't report a GAAP operating income line, but this
+    reconstructs their pretax income, the closest available analog."""
+    net_income = _annual_duration_series(gaap, NET_INCOME_TAGS)
+    tax = _annual_duration_series(gaap, INCOME_TAX_EXPENSE_TAGS)
+    return {end: net_income[end] + tax[end] for end in net_income if end in tax}
+
+
 def get_annual_financials(ticker: str, years: int = 5) -> list[dict]:
     """Return up to `years` most recent fiscal years of annual financials + derived metrics.
 
@@ -176,7 +204,9 @@ def get_annual_financials(ticker: str, years: int = 5) -> list[dict]:
 
     revenue = _annual_duration_series(gaap, REVENUE_TAGS)
     net_income = _annual_duration_series(gaap, NET_INCOME_TAGS)
-    operating_income = _annual_duration_series(gaap, OPERATING_INCOME_TAGS)
+    operating_income = _merge_series(
+        [_annual_duration_series(gaap, OPERATING_INCOME_TAGS), _pretax_income_fallback_series(gaap)]
+    )
     capex = _annual_duration_series(gaap, CAPEX_TAGS)
 
     assets = _annual_instant_series(gaap, ASSETS_TAGS)
@@ -184,6 +214,7 @@ def get_annual_financials(ticker: str, years: int = 5) -> list[dict]:
     cash = _annual_instant_series(gaap, CASH_TAGS)
     shares = _annual_instant_series(gaap, SHARES_TAGS)
     current_liabilities = _annual_instant_series(gaap, CURRENT_LIABILITIES_TAGS)
+    stockholders_equity = _annual_instant_series(gaap, STOCKHOLDERS_EQUITY_TAGS)
 
     fiscal_year_ends = sorted(revenue.keys(), reverse=True)[:years]
 
@@ -198,9 +229,10 @@ def get_annual_financials(ticker: str, years: int = 5) -> list[dict]:
         c = cash.get(end)
         s = shares.get(end)
         cl = current_liabilities.get(end)
+        se = stockholders_equity.get(end)
 
         fcf = (oi - cx) if (oi is not None and cx is not None) else None
-        invested_capital = (a - cl) if (a is not None and cl is not None) else None
+        invested_capital = (a - cl) if (a is not None and cl is not None) else se
 
         results.append(
             {
@@ -245,10 +277,13 @@ def get_latest_comp_metrics(ticker: str) -> Optional[dict]:
         return None
 
     net_income = _annual_duration_series(gaap, NET_INCOME_TAGS)
-    operating_income = _annual_duration_series(gaap, OPERATING_INCOME_TAGS)
+    operating_income = _merge_series(
+        [_annual_duration_series(gaap, OPERATING_INCOME_TAGS), _pretax_income_fallback_series(gaap)]
+    )
     capex = _annual_duration_series(gaap, CAPEX_TAGS)
     assets = _annual_instant_series(gaap, ASSETS_TAGS)
     current_liabilities = _annual_instant_series(gaap, CURRENT_LIABILITIES_TAGS)
+    stockholders_equity = _annual_instant_series(gaap, STOCKHOLDERS_EQUITY_TAGS)
     gross_profit = _annual_duration_series(gaap, GROSS_PROFIT_TAGS)
     cost_of_revenue = _annual_duration_series(gaap, COST_OF_REVENUE_TAGS)
     rd_expense = _annual_duration_series(gaap, RD_EXPENSE_TAGS)
@@ -263,6 +298,7 @@ def get_latest_comp_metrics(ticker: str) -> Optional[dict]:
     cx = capex.get(latest)
     a = assets.get(latest)
     cl = current_liabilities.get(latest)
+    se = stockholders_equity.get(latest)
     gp = gross_profit.get(latest)
     cor = cost_of_revenue.get(latest)
     rd = rd_expense.get(latest)
@@ -272,7 +308,7 @@ def get_latest_comp_metrics(ticker: str) -> Optional[dict]:
         gp = rev - cor
 
     fcf = (oi - cx) if (oi is not None and cx is not None) else None
-    invested_capital = (a - cl) if (a is not None and cl is not None) else None
+    invested_capital = (a - cl) if (a is not None and cl is not None) else se
     revenue_growth = (
         _safe_div(rev - prior_rev, prior_rev) if (rev is not None and prior_rev is not None) else None
     )

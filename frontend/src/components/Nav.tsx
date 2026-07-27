@@ -1,6 +1,6 @@
 import type { Ticker } from "../types";
 
-const TABS: Ticker[] = ["VRTX", "AVGO", "COST"];
+const TABS: Ticker[] = ["VRTX", "AVGO", "COST", "JPM"];
 
 export function Nav({
   active,

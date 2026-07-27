@@ -134,7 +134,7 @@ export function DCFModel({
               label={`Year ${i + 1} Revenue Growth`}
               value={rate}
               min={0}
-              max={40}
+              max={100}
               step={1}
               onChange={(v) => setGrowth(i, v)}
             />
@@ -142,24 +142,24 @@ export function DCFModel({
           <Slider
             label="EBITDA Margin"
             value={inputs.ebitdaMargin}
-            min={10}
-            max={80}
+            min={0}
+            max={100}
             step={1}
             onChange={(v) => setInputs((p) => ({ ...p, ebitdaMargin: v }))}
           />
           <Slider
             label="WACC"
             value={inputs.wacc}
-            min={5}
-            max={18}
+            min={0}
+            max={100}
             step={0.5}
             onChange={(v) => setInputs((p) => ({ ...p, wacc: v }))}
           />
           <Slider
             label="Terminal Growth Rate"
             value={inputs.terminalGrowth}
-            min={1}
-            max={5}
+            min={0}
+            max={100}
             step={0.5}
             onChange={(v) => setInputs((p) => ({ ...p, terminalGrowth: v }))}
           />

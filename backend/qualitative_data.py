@@ -595,4 +595,139 @@ QUALITATIVE_DATA = {
             }
         ],
     },
+    "JPM": {
+        "business_summary": {
+            "paragraphs": [
+                "JPMorgan Chase is the largest bank in the United States by assets, with $4.4 "
+                "trillion in total assets at the end of fiscal year 2025. It operates through "
+                "three main segments: Consumer and Community Banking, which covers branches, "
+                "credit cards, and home and auto lending for individual customers, Commercial "
+                "and Investment Bank, which covers trading, investment banking, and lending for "
+                "large corporations and institutions, and Asset and Wealth Management, which "
+                "manages money for institutions and wealthy individuals. Fiscal year 2025 net "
+                "revenue was $182.4 billion, up modestly from $177.6 billion the year before, "
+                "while net income was $57.0 billion, down slightly from $58.5 billion in fiscal "
+                "year 2024.",
+                "JPMorgan's own leadership describes its approach as running a fortress balance "
+                "sheet, meaning the company deliberately holds more capital and liquidity than "
+                "regulators require so it can keep lending and absorb losses through a downturn "
+                "rather than pull back the way many smaller banks have to. At the end of fiscal "
+                "year 2025, its core capital ratio, a measure of how much high-quality capital "
+                "it holds against its loans and investments, stood at 14.6%, well above the "
+                "11.5% regulatory minimum that applies to it. Return on tangible common equity, "
+                "a key profitability measure for banks, was 20% for fiscal year 2025, down from "
+                "22% the year before but still among the strongest in the industry, and tangible "
+                "book value per share grew to $107.56 from $97.30.",
+                "The core debate for investors is really about the economic cycle rather than "
+                "the company itself. JPMorgan's scale, its mix of consumer and institutional "
+                "banking, and its conservative capital position have let it consistently "
+                "outperform smaller banks through past downturns, including the 2008 financial "
+                "crisis and the 2023 regional bank stress. The tradeoff is that a bank this size "
+                "is deeply tied to the health of the overall economy. Loan losses, deposit "
+                "costs, and trading and deal-making revenue all move with interest rates, "
+                "credit conditions, and market volatility in ways that are largely outside "
+                "management's control.",
+            ],
+            "source": "Research · July 2026",
+        },
+        "moat": {
+            "type": "Scale + Switching Costs",
+            "strength": "WIDE",
+            "description": (
+                "JPMorgan's advantage starts with sheer scale. With $4.4 trillion in assets, it "
+                "can spread technology, compliance, and risk management costs across a base "
+                "that no regional or mid-size bank can match, which shows up directly in its 52% "
+                "overhead ratio, a measure of costs as a share of revenue that runs well below "
+                "many peers. On top of that, both consumer and business banking relationships "
+                "come with real switching costs. Moving a business's cash management, credit "
+                "lines, and payment processing to a new bank, or moving a household's checking "
+                "account, mortgage, and credit cards, all take real effort, so customers tend to "
+                "stay once they are set up. This combination of low-cost scale and sticky "
+                "relationships is difficult for smaller banks and non-bank fintech challengers "
+                "to replicate at the same time."
+            ),
+            "source": "Research · July 2026",
+        },
+        "risks": {
+            "items": [
+                {
+                    "title": "Results move with the credit cycle",
+                    "description": (
+                        "JPMorgan's results are directly tied to the health of the broader "
+                        "economy. A recession or a sharp rise in unemployment would increase "
+                        "loan defaults across its consumer and commercial loan books, forcing "
+                        "the company to set aside more money for expected losses, which reduces "
+                        "reported profit at exactly the point the economy is already struggling."
+                    ),
+                },
+                {
+                    "title": "Interest rates and market activity swing revenue",
+                    "description": (
+                        "A large share of JPMorgan's revenue, net interest income from loans and "
+                        "deposits, and trading and investment banking fees, depends on interest "
+                        "rates and market conditions the company does not control. Falling rates "
+                        "can compress the spread it earns on loans, while a quiet market for "
+                        "trading and dealmaking can slow the revenue its Commercial and "
+                        "Investment Bank segment depends on."
+                    ),
+                },
+                {
+                    "title": "Regulatory and capital requirements can tighten",
+                    "description": (
+                        "As the largest and most systemically important U.S. bank, JPMorgan "
+                        "faces the strictest capital, stress testing, and regulatory "
+                        "requirements in the industry, and those requirements can tighten "
+                        "further after any period of financial stress. A higher required capital "
+                        "ratio would force the company to hold more capital against the same "
+                        "amount of business, directly limiting how much it can return to "
+                        "shareholders through dividends and buybacks."
+                    ),
+                },
+            ],
+            "source": "Research · July 2026",
+        },
+        "csuite": [
+            {
+                "name": "Jamie Dimon",
+                "role": "Chairman & CEO",
+                "tenure": "CEO since 2005",
+                "strengths": [
+                    "Led the firm through the 2008 financial crisis without needing the kind of "
+                    "government rescue several competitors required",
+                    "The longest-tenured CEO among the largest U.S. banks, giving him unusual "
+                    "continuity in setting long-term strategy",
+                    "Built and consistently maintained the firm's fortress balance sheet "
+                    "philosophy, which has repeatedly let JPMorgan play offense (acquiring "
+                    "distressed assets and market share) during downturns that hurt competitors",
+                ],
+                "watch": [
+                    "CEO succession is one of the most closely watched questions on Wall Street. "
+                    "Several internal executives hold senior roles that position them as "
+                    "possible successors, but Dimon has not committed to a firm retirement date",
+                    "A leadership change at a company this closely identified with one person "
+                    "carries real transition risk, regardless of how strong the bench is",
+                ],
+            },
+            {
+                "name": "Jeremy Barnum",
+                "role": "CFO",
+                "tenure": "Since 2021",
+                "strengths": [
+                    "Came into the CFO role after running JPMorgan's Global Markets trading "
+                    "business, giving him direct operating experience rather than a purely "
+                    "financial background",
+                    "Communicates clearly and directly on quarterly earnings calls about drivers "
+                    "of net interest income and credit costs",
+                ],
+                "watch": [
+                    "Considerably shorter tenure than Dimon's, and has had less time in the seat "
+                    "relative to CFOs at some peer banks",
+                ],
+            },
+        ],
+        # TODO(user): no earnings call summary yet. Update earnings summaries
+        # manually, generate a new one in Claude at claude.ai and paste it
+        # here in the same shape as the other tickers' `earnings` entries.
+        "earnings": [],
+    },
 }

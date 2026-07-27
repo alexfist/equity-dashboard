@@ -1,4 +1,4 @@
-export type Ticker = "VRTX" | "AVGO" | "COST";
+export type Ticker = "VRTX" | "AVGO" | "COST" | "JPM";
 
 export interface CompanyInfo {
   ticker: Ticker;

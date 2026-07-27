@@ -5,7 +5,7 @@ was specified for them) — clearly labeled as such in the API response and
 in the frontend footnote per the user's own requirement.
 """
 
-TICKERS = ["VRTX", "AVGO", "COST"]
+TICKERS = ["VRTX", "AVGO", "COST", "JPM"]
 
 COMPANY_INFO = {
     "VRTX": {
@@ -34,6 +34,17 @@ COMPANY_INFO = {
         "cik": "0000909832",
         "recommendation": "HOLD",
         "current_price": 920.00,
+    },
+    "JPM": {
+        "ticker": "JPM",
+        "name": "JPMorgan Chase & Co.",
+        "sector": "Banking / Financial Services",
+        "exchange": "NYSE",
+        "cik": "0000019617",
+        "recommendation": "HOLD",
+        # TODO(user): placeholder only, no live price source was available for
+        # this session — replace with the actual current price.
+        "current_price": 300.00,
     },
 }
 
@@ -83,6 +94,32 @@ DCF_ASSUMPTIONS = {
         "shares": 0.444,
         "is_net_debt": True,
         "exit_ebitda_multiple": 24.8,
+    },
+    # TODO(user): this EBITDA/CapEx-driven DCF shape was built for
+    # operating companies and doesn't really fit a bank's economics — a bank
+    # doesn't have a meaningful "EBITDA" or "CapEx" line, its value drivers
+    # are net interest margin, loan growth, and credit losses, and analysts
+    # more commonly value banks off a dividend discount or excess-return-on-
+    # tangible-equity model instead. These are rough placeholders sized to
+    # produce a plausible-looking output, not a real bank valuation model —
+    # replace before trusting the JPM DCF numbers. base_revenue is FY2025
+    # total net revenue ($182.4B) and shares is FY2025 shares outstanding
+    # (2.696B), both pulled from the FY2025 10-K; ebitda_margin uses
+    # pretax margin as a rough EBITDA proxy.
+    "JPM": {
+        "base_revenue": 182.4,
+        "growth_rates": [4, 4, 4, 4, 4],
+        "ebitda_margin": 40,
+        "da": 2.0,
+        "capex": 3.5,
+        "tax_rate": 23,
+        "wacc": 9.0,
+        "terminal_growth": 3.0,
+        "net_cash": None,
+        "net_debt": None,
+        "shares": 2.696,
+        "is_net_debt": True,
+        "exit_ebitda_multiple": 10.0,
     },
 }
 
@@ -243,6 +280,54 @@ COMPS_DATA = {
                 "higher_is_better": True,
                 "values": {"COST": 3.8, "WMT": 4.3, "TGT": 5.5, "BJ": 3.5, "AMZN": 6.2},
                 "best_in_class": "AMZN",
+            },
+        ],
+    },
+    # TODO(user): none of these bank-native metrics (ROTCE, overhead ratio,
+    # CET1, NIM, P/TBV) map onto LIVE_COMPS_METRICS, so all values here stay
+    # hardcoded "Research estimate" rather than being live-overlaid like the
+    # other three tickers. JPM's own figures (ROTCE 20%, overhead ratio 52%,
+    # CET1 14.6%) are verified against the FY2025 10-K. Peer figures (BAC,
+    # WFC, C, GS) are left as None placeholders — fill in from each bank's
+    # own most recent 10-K/earnings release.
+    "JPM": {
+        "peers": ["JPM", "BAC", "WFC", "C", "GS"],
+        "metrics": [
+            {
+                "label": "Fwd P/E",
+                "higher_is_better": False,
+                "values": {"JPM": None, "BAC": None, "WFC": None, "C": None, "GS": None},
+                "best_in_class": None,
+            },
+            {
+                "label": "Price / Tangible Book",
+                "higher_is_better": False,
+                "values": {"JPM": None, "BAC": None, "WFC": None, "C": None, "GS": None},
+                "best_in_class": None,
+            },
+            {
+                "label": "ROTCE",
+                "higher_is_better": True,
+                "values": {"JPM": 20.0, "BAC": None, "WFC": None, "C": None, "GS": None},
+                "best_in_class": "JPM",
+            },
+            {
+                "label": "Overhead (Efficiency) Ratio",
+                "higher_is_better": False,
+                "values": {"JPM": 52.0, "BAC": None, "WFC": None, "C": None, "GS": None},
+                "best_in_class": "JPM",
+            },
+            {
+                "label": "Net Interest Margin",
+                "higher_is_better": True,
+                "values": {"JPM": None, "BAC": None, "WFC": None, "C": None, "GS": None},
+                "best_in_class": None,
+            },
+            {
+                "label": "CET1 Capital Ratio",
+                "higher_is_better": True,
+                "values": {"JPM": 14.6, "BAC": None, "WFC": None, "C": None, "GS": None},
+                "best_in_class": "JPM",
             },
         ],
     },
