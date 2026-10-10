@@ -11,6 +11,13 @@ release cut.
 ## [Unreleased]
 
 ### Changed
+- Backend hosting moved from Railway (service no longer exists) to Render:
+  added `render.yaml` Blueprint (explicit start command, health check,
+  `ALLOWED_ORIGINS` preset to the Vercel production URL), a README
+  Deployment section, and an optional `SEC_USER_AGENT` env var so the SEC
+  EDGAR User-Agent contact email can be set without a code change.
+
+### Changed
 - DCF sliders (all five year-by-year revenue growth rates, EBITDA margin,
   WACC, and terminal growth rate) now range 0-100% instead of arbitrary
   narrower caps (e.g. WACC was capped at 18%, terminal growth at 5%),

@@ -4,12 +4,14 @@ SEC rejects any automated request that lacks a descriptive User-Agent
 (name + contact email) with a 403 — every call here sets one.
 """
 
+import os
 import time
 from typing import Optional
 
 import httpx
 
-SEC_USER_AGENT = "EquityDashboard research@example.com"
+# Override with a real contact email in production (SEC asks for one).
+SEC_USER_AGENT = os.environ.get("SEC_USER_AGENT") or "EquityDashboard research@example.com"
 HEADERS = {"User-Agent": SEC_USER_AGENT}
 
 TICKER_MAP_URL = "https://www.sec.gov/files/company_tickers.json"

@@ -90,6 +90,14 @@ equity-dashboard/
 
 Tickers: `VRTX`, `AVGO`, `COST`.
 
+## Deployment
+
+The frontend runs on Vercel and the backend on Render (free tier).
+
+**Backend (Render):** New > Blueprint, pick this repo; `render.yaml` configures the service. Set `FINNHUB_KEY` when prompted (and optionally `SEC_USER_AGENT` with a real contact email). `ALLOWED_ORIGINS` is preset to the Vercel production URL; edit it in `render.yaml` if the frontend URL changes. The free tier sleeps after about 15 minutes idle, so the first request afterwards takes 30 to 60 seconds.
+
+**Frontend (Vercel):** set `VITE_API_BASE_URL` to the Render service URL (no trailing slash) for the Production environment, then redeploy, since Vite bakes it in at build time.
+
 ## Notes
 
 - SEC EDGAR requires a descriptive `User-Agent` header on every request — this is set in `backend/sec_edgar.py` and reused by `financials.py`.
